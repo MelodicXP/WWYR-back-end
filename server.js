@@ -6,6 +6,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+// Require movieHandler in order to access functions (movieHandler.getAllMovies, movieHandler.createMovies
+const movieHandler = require('./Modules/movie-handler');
+
 // Assign mongoDB connection from .env to a varaible 'MONGODB_CONN'
 const MONGODB_CONN = process.env.MONGODB_CONN;
 
@@ -22,7 +25,11 @@ mongoose.connect(MONGODB_CONN);
 const db = mongoose.connection;
 
 // Default route check - functioning (get request in thunder client -- http://localhost:3001)
-app.get('/', (req,res,next) => res.status(200).send('Default Route Working'));
+app.get('/', (req,res) => res.status(200).send('Default Route Working'));
+
+// CRUD routes for movies
+app.get('/movies', movieHandler.getAllMovies);
+app.post('/movies', movieHandler.createMovies);
 
 // Check if mongoose connection failure or sucess
 db.on('error', console.error.bind(console, 'connection error'));
