@@ -28,8 +28,8 @@ movieHandler.getAllMovies = function(request, expressResponse){
     });
 };
 
-// Function - create and add movies to database from user input
-movieHandler.createMovies = function(request, expressResponse){
+// Function - create and add movie to database from user input
+movieHandler.createMovie = function(request, expressResponse){
 
   // Assign data from front-end (request.body) to data variable
   const data = request.body;
@@ -58,6 +58,35 @@ movieHandler.createMovies = function(request, expressResponse){
       // Log error and send a 500 Internal Server Error response
       console.error(err);
       expressResponse.status(500).send('Internal Server Error, creating movie');
+    });
+};
+
+// Function - delete a movie from database
+movieHandler.deleteMovie = function(request, expressResponse){
+  const {id} = request.params;
+  // const userEmail = request.user.email;
+
+  // First, find movie and check if it belongs to the user by comparing email
+  Movie.findById(id)
+    .then(movie => {
+      if (!movie) {
+        return expressResponse.status(404).send('Movie not found');
+      }
+
+      // Reactivate - once have Auth0 that passes in email address
+      // if (movie.email !== userEmail) {
+      //   return expressResponse.status(403).send('Unauthorized to delete this Movie');
+      // }
+
+      // Proceed with deletion if the user email matches
+      return Movie.findByIdAndDelete(id);
+    })
+    .then(deletedMovie => {
+      expressResponse.status(200).send(deletedMovie);
+    })
+    .catch(err => {
+      console.error(err);
+      expressResponse.status(500).send('Internal Server Error, deleting movie');
     });
 };
 
