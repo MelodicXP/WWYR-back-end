@@ -30,6 +30,7 @@ app.get('/', (req,res) => res.status(200).send('Default Route Working'));
 // CRUD routes for movies
 app.get('/movies', movieHandler.getAllMovies);
 app.post('/movies', movieHandler.createMovie);
+app.put('/movies/:id', movieHandler.updateMovie);
 app.delete('/movies/:id', movieHandler.deleteMovie);
 
 // Check if mongoose connection failure or sucess

@@ -61,6 +61,37 @@ movieHandler.createMovie = function(request, expressResponse){
     });
 };
 
+// Function - update an existing movie's data
+movieHandler.updateMovie = function(request, expressResponse){
+  const {id} = request.params;
+  const data = request.body;
+  // const userEmail = request.user.email;
+
+  // new - returns updated doc instead of old doc
+  // overwrite - overwrites doc completely avoiding unwanted properties/side-effects
+  Movie.findById(id)
+    .then(movie => {
+      if (!movie) {
+        return expressResponse.status(404).send('Movie not found');
+      }
+
+      // Reactivate once using Auth0
+      // if (movie.email !== userEmail) {
+      //   return expressResponse.status(403).send('Unauthorized to update this movie');
+      // }
+
+      // Proceed with update if the user email matches
+      return Movie.findByIdAndUpdate(id, data, { new: true, overwrite: true });
+    })
+    .then(updatedMovie => {
+      expressResponse.status(200).send(updatedMovie);
+    })
+    .catch(err => {
+      console.error(err);
+      expressResponse.status(500).send('Internal Server Error, updating movie');
+    });
+};
+
 // Function - delete a movie from database
 movieHandler.deleteMovie = function(request, expressResponse){
   const {id} = request.params;
