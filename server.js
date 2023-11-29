@@ -21,6 +21,9 @@ const PORT = process.env.PORT;
 mongoose.connect(MONGODB_CONN);
 const db = mongoose.connection;
 
+// Default route check - functioning (get request in thunder client -- http://localhost:3001)
+app.get('/', (req,res,next) => res.status(200).send('Default Route Working'));
+
 // Check if mongoose connection failure or sucess
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', () => console.log('Mongoose is connected'));

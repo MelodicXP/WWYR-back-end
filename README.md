@@ -1,4 +1,4 @@
-# PROJECT NAME
+# WWYR - Back-end
 
 project description goes here.
 
@@ -48,7 +48,19 @@ Any environment configuration steps.
 
 ### 11-29-2023
 
-11-29-2023 8:30pm - Application now has successful connection to MongoDB using Mongoose.
+11-29-2023 9:30pm - Set up basic CRUD routes
+
+Name of feature: Set up basic CRUD routes
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 9:30 am
+
+Finish time:
+
+Actual time needed to complete:
+
+11-29-2023 9:30pm - Application now has successful connection to MongoDB using Mongoose.
 
 Name of feature: Set up back-end to connect to MongoDB using Mongoose
 
@@ -56,9 +68,9 @@ Estimate of time needed to complete: 2 hours
 
 Start time: 8:30 am
 
-Finish time:
+Finish time: 9:30 am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr
 
 ## Collaborators
 
