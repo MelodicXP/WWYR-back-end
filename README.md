@@ -46,9 +46,9 @@ Any environment configuration steps.
 
 ## Change Log
 
-### 11-29-2023
+### 11-29-2023 thru 11-30-2023
 
-11-29-2023 9:30pm - Set up basic CRUD routes
+11-29-2023 - 11-30-2023 9:15am - Set up basic CRUD routes
 
 Name of feature: Set up basic CRUD routes
 
@@ -56,11 +56,15 @@ Estimate of time needed to complete: 2 hours
 
 Start time: 9:30 am
 
-Finish time:
+Finish time: 10:30 am
 
-Actual time needed to complete:
+Start time: 8:00 am
 
-11-29-2023 9:30pm - Application now has successful connection to MongoDB using Mongoose.
+Finish time: 9:15 am
+
+Actual time needed to complete: 2 hours
+
+11-29-2023 9:30am - Application now has successful connection to MongoDB using Mongoose.
 
 Name of feature: Set up back-end to connect to MongoDB using Mongoose
 
@@ -74,4 +78,4 @@ Actual time needed to complete: 1 hr
 
 ## Collaborators
 
-List collaborators here.
+Melo

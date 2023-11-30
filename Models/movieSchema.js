@@ -8,11 +8,11 @@ const {Schema} = mongoose;
 const MovieSchema = new Schema({
   userName: {
     type:String,
-    required: true
+    required: false
   },
   email: {
     type:String,
-    required: true
+    required: false
   },
   movieName: {
     type:String,

@@ -36,13 +36,7 @@ movieHandler.createMovie = function(request, expressResponse){
 
   // Check if valid data received from user input
   if (
-    !data ||
-    !data.userName ||
-    !data.email ||
-    !data.movieName ||
-    !data.genre ||
-    !data.userComment ||
-    !data.videoLink
+    !data
   ) {
     // Validate request body for required movie data
     return expressResponse.status(400).send('Invalid movie data');
