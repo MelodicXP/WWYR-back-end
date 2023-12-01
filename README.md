@@ -44,6 +44,16 @@ Any environment configuration steps.
 
 ### Languages & tools
 
+### 12-8-2023
+
+12-8-2023 8:00am - Authenticate user before executing CRUD requests
+
+Name of feature: Authorize user before executing CRUD requests
+
+Estimate of time needed to complete: 1 hour
+
+Actual time needed to complete: 1 hour
+
 ## Change Log
 
 ### 11-29-2023 thru 11-30-2023
