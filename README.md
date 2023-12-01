@@ -44,7 +44,17 @@ Any environment configuration steps.
 
 ### Languages & tools
 
+## Change Log
+
 ### 12-8-2023
+
+12-8-2023 2:20pm - Open AI API call with prompt
+
+Name of feature: Open AI API call with prompt
+
+Estimate of time needed to complete: 1 hour
+
+Actual time needed to complete: 4 hours
 
 12-8-2023 8:00am - Authenticate user before executing CRUD requests
 
@@ -53,8 +63,6 @@ Name of feature: Authorize user before executing CRUD requests
 Estimate of time needed to complete: 1 hour
 
 Actual time needed to complete: 1 hour
-
-## Change Log
 
 ### 11-29-2023 thru 11-30-2023
 

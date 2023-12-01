@@ -32,7 +32,7 @@ const db = mongoose.connection;
 app.get('/', (req,res) => res.status(200).send('Default Route Working'));
 
 // Check if user is legitimate 
-// app.use(verifyUser);
+app.use(verifyUser);
 
 // CRUD routes for movies
 app.get('/movies', movieHandler.getAllMovies);

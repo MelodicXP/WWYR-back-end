@@ -24,7 +24,10 @@ async function getGptMovies(request, expressResponse, next) {
   // If key matches in cache and timestamp is less than 24 hours, use cache data
   if ( cache[key] && (Date.now() - cache[key].timestamp < twentyFourHoursInMs) ) {
     console.log('cache hit - sending data from cache');
-    expressResponse.status(200).send({ data: cache[key].data });
+
+    const responseData = { data: cache[key].data };
+    console.log("Sending back cached data:", responseData);
+    expressResponse.status(200).send(responseData);
 
   } else {
     console.log('cache miss - making a new request');
@@ -62,7 +65,9 @@ async function getGptMovies(request, expressResponse, next) {
         cache[key] = { data: recommendations, timestamp: timeStamp };
 
         // Send back data as json (object)
-        expressResponse.status(200).send({ recommendations: recommendations });
+        const responsePayload = { data: recommendations };
+        console.log("Sending response:", responsePayload);
+        expressResponse.status(200).send(responsePayload);
       } else {
         // Handle where the expected data is not present
         console.log('Unexpected response structure:', axiosResponse.data);
