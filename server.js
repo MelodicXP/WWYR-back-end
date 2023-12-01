@@ -13,6 +13,9 @@ const movieHandler = require('./Modules/movie-handler');
 // Assign mongoDB connection from .env to a varaible 'MONGODB_CONN'
 const MONGODB_CONN = process.env.MONGODB_CONN;
 
+// Require gptMovies for gpt api calls
+const getGptMovies = require('./Modules/gptMovies');
+
 // Add middleware - Assign express to variable 'app' and use with '.use'
 const app = express();
 app.use(cors());
@@ -29,13 +32,16 @@ const db = mongoose.connection;
 app.get('/', (req,res) => res.status(200).send('Default Route Working'));
 
 // Check if user is legitimate 
-app.use(verifyUser);
+// app.use(verifyUser);
 
 // CRUD routes for movies
 app.get('/movies', movieHandler.getAllMovies);
 app.post('/movies', movieHandler.createMovie);
 app.put('/movies/:id', movieHandler.updateMovie);
 app.delete('/movies/:id', movieHandler.deleteMovie);
+
+// ChatGPT api call
+app.get('/gpt-movies', getGptMovies);
 
 // Check if mongoose connection failure or sucess
 db.on('error', console.error.bind(console, 'connection error'));
