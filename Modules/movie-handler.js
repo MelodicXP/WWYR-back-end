@@ -7,10 +7,9 @@ const movieHandler = {};
 
 // Function - get all movies not equal to user email
 movieHandler.getAllMovies = function(request, expressResponse){
-  console.log(request.user);
   // Set property of user email
-  let queryObject = {email: request.user.email};
-  // let queryObject = {}; // deactivate this and re-activate with email once Autho0 established
+  // let queryObject = {email: request.user.email};
+  let queryObject = {}; // deactivate this and re-activate with email once Autho0 established
 
   Movie.find(queryObject) // Find data by user email
     .then(data => {
