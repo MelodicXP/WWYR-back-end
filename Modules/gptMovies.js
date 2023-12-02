@@ -10,7 +10,6 @@ async function getGptMovies(request, expressResponse, next) {
 
   //Convert nameOfMovie back into original form (comes in 'The_Matrix' convert back to 'The Matrix)
   const nameOfMovie = request.query.nameOfMovie.replace(/_/g, ' ');
-  console.log(nameOfMovie);
 
   // Open AI - API url
   const url = 'https://api.openai.com/v1/chat/completions';
