@@ -41,11 +41,11 @@ movieHandler.createMovie = function(request, expressResponse){
     return expressResponse.status(400).send('Invalid movie data');
   }
 
-  // Add user email property to movie data
-  let movieDataWithEmailAdded = {...data, email: request.user.email, userName: request.user.given_name}; //---> Add to Movie.create(movieDatawithEmailAdded)
+  // Add user auth0 ID property to movie data
+  let movieDataWithUserIDAdded = {...data, userID: request.user.sub, userName: request.user.given_name}; //---> Add to Movie.create(movieDatawithEmailAdded)
 
-  // Create new movie from data along with user email and send back confirmation if data created successfully
-  Movie.create(movieDataWithEmailAdded) // --> change to movie.Create(movieDataWithEmailAdded) once Auth0, from Movie.create(data)
+  // Create new movie from data along with user ID and send back confirmation if data created successfully
+  Movie.create(movieDataWithUserIDAdded) // --> change to movie.Create(movieDataWithUserIDAdded) once Auth0, from Movie.create(data)
     .then(createdMovie => expressResponse.status(201).send(createdMovie))
     .catch(err => {
       // Log error and send a 500 Internal Server Error response
@@ -58,7 +58,7 @@ movieHandler.createMovie = function(request, expressResponse){
 movieHandler.updateMovie = function(request, expressResponse){
   const {id} = request.params;
   const data = request.body;
-  const userEmail = request.user.email;
+  const userID = request.user.sub;
 
   // new - returns updated doc instead of old doc
   // overwrite - overwrites doc completely avoiding unwanted properties/side-effects
@@ -68,12 +68,12 @@ movieHandler.updateMovie = function(request, expressResponse){
         return expressResponse.status(404).send('Movie not found');
       }
 
-      // Reactivate once using Auth0
-      if (movie.email !== userEmail) {
+      // Check if userID of movie matches userID
+      if (movie.userID !== userID) {
         return expressResponse.status(403).send('Unauthorized to update this movie');
       }
 
-      // Proceed with update if the user email matches
+      // Proceed with update of moive user ID matches
       return Movie.findByIdAndUpdate(id, data, { new: true, overwrite: true });
     })
     .then(updatedMovie => {
@@ -88,21 +88,21 @@ movieHandler.updateMovie = function(request, expressResponse){
 // Function - delete a movie from database
 movieHandler.deleteMovie = function(request, expressResponse){
   const {id} = request.params;
-  const userEmail = request.user.email;
+  const userID = request.user.sub;
 
-  // First, find movie and check if it belongs to the user by comparing email
+  // First, find movie and check if it belongs to the user by comparing user ID
   Movie.findById(id)
     .then(movie => {
       if (!movie) {
         return expressResponse.status(404).send('Movie not found');
       }
 
-      // Reactivate - once have Auth0 that passes in email address
-      if (movie.email !== userEmail) {
+      // Reactivate - once have Auth0 that passes in user ID
+      if (movie.userID !== userID) {
         return expressResponse.status(403).send('Unauthorized to delete this Movie');
       }
 
-      // Proceed with deletion if the user email matches
+      // Proceed with deletion if the id matches
       return Movie.findByIdAndDelete(id);
     })
     .then(deletedMovie => {

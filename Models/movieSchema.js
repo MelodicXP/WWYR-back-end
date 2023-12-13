@@ -10,7 +10,7 @@ const MovieSchema = new Schema({
     type:String,
     required: false
   },
-  email: {
+  userID: {
     type:String,
     required: false
   },
