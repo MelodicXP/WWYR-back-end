@@ -1,6 +1,12 @@
 # WWYR - Back-end
 
-project description goes here.
+## Team Member(s)
+
+Melo "Melodic" Gonzalez
+
+## Description
+
+Provide users with movie recommendations (complete with YouTube trailer, contributor details, and comments about the movie) from individuals the user knows and trusts. Users will have access to a curated selection of movies handpicked by their own community. Users value personal recommendations when it comes to deciding what movie to watch.
 
 ## Getting Started
 
@@ -44,7 +50,27 @@ Any environment configuration steps.
 
 ### Languages & tools
 
+JavaScript, Axios, Mongoose, MongoDB, Cors, Dotenv, Express, Jsonwebtoken, jwks-rsa, openai
+
 ## Change Log
+
+### 12-13-2023
+
+12-13-2023 2:20pm - Send back user ID in data
+
+Name of feature: Modification, send back user ID in data instead of email
+
+Estimate of time needed to complete: 1 hour
+
+Actual time needed to complete: 4 hours
+
+12-8-2023 8:00am - Authenticate user before executing CRUD requests
+
+Name of feature: Authorize user before executing CRUD requests
+
+Estimate of time needed to complete: 1 hour
+
+Actual time needed to complete: 1 hour
 
 ### 12-8-2023
 
@@ -94,6 +120,34 @@ Finish time: 9:30 am
 
 Actual time needed to complete: 1 hr
 
-## Collaborators
+## Links
 
-Melo
+### GitHub Project Management Board
+
+[GitHub Project Management Board](https://github.com/orgs/WWYR-Community-Movie-Recommendations/projects/2/views/1)  
+
+### Domain Model (image)
+
+![Domain Model](img/DomainModel.png)
+
+### Database Schema (image)
+
+![Database Schema](img/DatabaseSchema.png)
+
+### WireFrames (images)
+
+![Landing Page](img/LandingPage.png)  
+
+![Home Page](img/HomePage.png)  
+
+![Community List](img/CommunityList.png)  
+
+![Share A Movie](img/ShareAMovieModal.png)
+
+### Team Agreement
+
+[Team Agreement](TeamAgreement.md)
+
+### Lighthouse Scores
+
+LightHouse Score 11-07-2023 ![Lighthouse](img/LightHouseWWYR.png)
